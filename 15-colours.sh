@@ -13,9 +13,9 @@ fi
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
-       echo "error:installing $2 ...$R failure $N"
+       echo -e "error:installing $2 ...$R failure $N"
     else
-       echo "installing $2 ...$G success $N"
+       echo -e "installing $2 ...$G success $N"
     fi       
 }
 
@@ -25,7 +25,7 @@ if [ $? -ne 0 ];then
    dnf install mysql -y
    VALIDATE $? "mysql"
 else
-   echo "mysql already exit ... $Y skipping $N"
+   echo -e "mysql already exit ... $Y skipping $N"
 fi
 
 dnf list installed nginx
@@ -34,7 +34,7 @@ if [ $? -ne 0 ];then
    dnf install nginx -y
    VALIDATE $? "nginx"
 else
-   echo "nginx already exit ... $Y skipping $N"
+   echo -e "nginx already exit ... $Y skipping $N"
 fi
 
 dnf list installed python3
@@ -43,5 +43,5 @@ if [ $? -ne 0 ];then
    dnf install python3 -y
    VALIDATE $? "python3"
 else
-   echo "python3 already exit ... $Y skipping $N"
+   echo -e "python3 already exit ... $Y skipping $N"
 fi
