@@ -6,7 +6,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-if [ $USERID -ne o ]; then
+if [ $USERID -ne 0 ]; then
   echo "error:please run this script with root user"
   exit 1
 fi
