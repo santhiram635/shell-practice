@@ -15,7 +15,7 @@ if [ $USERID -ne 0 ]; then
 fi
 
 mkdir -p $LOGS_FOLDER
-  echo "script started time at: $(date)"
+  echo "script started time at: $(date)" | tee -a $LOG_FILE
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
@@ -30,7 +30,7 @@ dnf list installed mysql &>>LOG_FILE
      dnf install mysql -y &>>LOG_FILE
      VALIDATE $? "mysql"
   else
-     echo -e "mysql already exit ... $Y skipping $N"
+     echo -e "mysql already exit ... $Y skipping $N" | tee -a $LOG_FILE
   fi
 
 dnf list installed nginx &>>LOG_FILE
@@ -38,7 +38,7 @@ dnf list installed nginx &>>LOG_FILE
      dnf install nginx -y &>>LOG_FILE
      VALIDATE $? "nginx"
   else
-     echo -e "mysql already exit ... $Y skipping $N"
+     echo -e "mysql already exit ... $Y skipping $N" | tee -a $LOG_FILE
   fi
 
 dnf list installed python3 &>>LOG_FILE
@@ -46,5 +46,5 @@ dnf list installed python3 &>>LOG_FILE
      dnf install python3 -y &>>LOG_FILE
      VALIDATE $? "python3"
   else
-     echo -e "mysql already exit ... $Y skipping $N"
+     echo -e "mysql already exit ... $Y skipping $N" | tee -a $LOG_FILE
   fi    
