@@ -18,7 +18,7 @@ mkdir -p $LOGS_FOLDER
   echo "script started time at: $(date)"
 
 VALIDATE(){
-    if [ %1 -ne 0 ]; then
+    if [ $1 -ne 0 ]; then
       echo -e "installing $2 ...$R failure $N" &>>LOG_FILE
     else
       echo -e "installing $2... $G success $N" &>>LOG_FILE
